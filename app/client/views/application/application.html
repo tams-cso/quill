@@ -27,15 +27,15 @@
                  ng-model="user.profile.name">
         </div>
 
-        <div class="field" ng-show="autoFilledSchool">
+        <!-- <div class="field" ng-show="autoFilledSchool">
           <label> School </label>
           <input class="ui input"
                  disabled="disabled"
                  ng-show="autoFilledSchool"
                  ng-model="user.profile.school">
-        </div>
+        </div> -->
 
-        <div class="field" ng-show="!autoFilledSchool">
+        <div class="field" >
           <label> School </label>
           <div id="school" class="ui search">
             <div class="ui input">
@@ -47,7 +47,7 @@
 
         <div class="field">
           <label>Graduation Year</label>
-          <p><em>Put 2024 if you are 2025+</em></p>
+          <p><em>Put 2024 if your graduation year is 2025+</em></p>
           <select
             name="year"
             ng-model="user.profile.graduationYear">
@@ -89,7 +89,7 @@
 
         <div class="field">
           <p>
-            This event is only for students 18 years or younger. However, this means we are required to have a parent consent form.
+            This event is only for students 13 to 18 (inclusive).
           </p>
           <div class="ui checkbox">
             <input type="checkbox" id="minor" ng-model="user.profile.minor">
