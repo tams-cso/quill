@@ -51,6 +51,15 @@ angular.module('reg')
                 }
               ]
             },
+            address: {
+              identifier: 'address',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please let us know your shipping address!'
+                }
+              ]
+            },
             signatureLiability: {
               identifier: 'signatureLiabilityWaiver',
               rules: [
@@ -76,6 +85,8 @@ angular.module('reg')
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
+        } else {
+          swal("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
 

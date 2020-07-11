@@ -13,23 +13,7 @@
         <fieldset ng-disabled="pastConfirmation">
 
           <div class="field">
-            <label> Country </label>
-            <input type="text"
-                   name="country"
-                   placeholder="USA"
-                   ng-model="user.confirmation.country">
-          </div>
-
-          <div class="field">
-            <label> State </label>
-            <input type="text"
-                   name="state"
-                   placeholder="TX"
-                   ng-model="user.confirmation.state">
-          </div>
-
-          <div class="field">
-            <label> Shirt Size (required) </label>
+            <label> Shirt Size </label>
             <p>
               Let's get you some swag!
             </p>
@@ -47,10 +31,21 @@
             </select>
           </div>
 
+          <div class="field">
+            <label> Shipping address </label>
+            <p>
+              Where to send your swag?
+            </p>
+            <input type="text"
+                   name="country"
+                   placeholder="1600 Pennsylvania Ave Nw, Washington, DC 20500"
+                   ng-model="user.confirmation.address">
+          </div>
+
           <br>
           <br>
 
-          <div class="divided title"> Skills & Accomplishments </div>
+          <div class="divided title"> Skills & Accomplishments (optional) </div>
 
           <div class="field">
             <label> What are you studying? </label>
