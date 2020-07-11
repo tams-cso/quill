@@ -1,8 +1,8 @@
-var mongoose   = require('mongoose'),
-    bcrypt     = require('bcrypt'),
-    validator  = require('validator'),
-    jwt        = require('jsonwebtoken');
-    JWT_SECRET = process.env.JWT_SECRET;
+var mongoose = require("mongoose"),
+  bcrypt = require("bcrypt"),
+  validator = require("validator"),
+  jwt = require("jsonwebtoken");
+JWT_SECRET = process.env.JWT_SECRET;
 
 var profile = {
   // Basic info
@@ -65,8 +65,8 @@ var confirmation = {
   shirtSize: {
     type: String,
     enum: {
-      values: 'XS S M L XL XXL WXS WS WM WL WXL WXXL'.split(' ')
-    }
+      values: "XS S M L XL XXL WXS WS WM WL WXL WXXL".split(" "),
+    },
   },
   wantsHardware: Boolean,
   hardware: String,
@@ -85,7 +85,7 @@ var confirmation = {
     city: String,
     state: String,
     zip: String,
-    country: String
+    country: String,
   },
   receipt: String,
 
@@ -120,11 +120,8 @@ var status = {
   },
   admittedBy: {
     type: String,
-    validate: [
-      validator.isEmail,
-      'Invalid Email',
-    ],
-    select: false
+    validate: [validator.isEmail, "Invalid Email"],
+    select: false,
   },
   confirmed: {
     type: Boolean,
@@ -145,31 +142,27 @@ var status = {
     type: Number,
   },
   confirmBy: {
-    type: Number
+    type: Number,
   },
   reimbursementGiven: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 };
 
 // define the schema for our admin model
 var schema = new mongoose.Schema({
-
   email: {
-      type: String,
-      required: true,
-      unique: true,
-      validate: [
-        validator.isEmail,
-        'Invalid Email',
-      ]
+    type: String,
+    required: true,
+    unique: true,
+    validate: [validator.isEmail, "Invalid Email"],
   },
 
   password: {
     type: String,
     required: true,
-    select: false
+    select: false,
   },
 
   admin: {
@@ -198,14 +191,14 @@ var schema = new mongoose.Schema({
   verified: {
     type: Boolean,
     required: true,
-    default: false
+    default: false,
   },
 
   salt: {
     type: Number,
     required: true,
     default: Date.now(),
-    select: false
+    select: false,
   },
 
   /**
@@ -225,15 +218,14 @@ var schema = new mongoose.Schema({
   confirmation: confirmation,
 
   status: status,
-
 });
 
-schema.set('toJSON', {
-  virtuals: true
+schema.set("toJSON", {
+  virtuals: true,
 });
 
-schema.set('toObject', {
-  virtuals: true
+schema.set("toObject", {
+  virtuals: true,
 });
 
 //=========================================
@@ -241,16 +233,16 @@ schema.set('toObject', {
 //=========================================
 
 // checking if this password matches
-schema.methods.checkPassword = function(password) {
+schema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
 // Token stuff
-schema.methods.generateEmailVerificationToken = function(){
+schema.methods.generateEmailVerificationToken = function () {
   return jwt.sign(this.email, JWT_SECRET);
 };
 
-schema.methods.generateAuthToken = function(){
+schema.methods.generateAuthToken = function () {
   return jwt.sign(this._id, JWT_SECRET);
 };
 
@@ -263,19 +255,23 @@ schema.methods.generateAuthToken = function(){
  *   exp: expiration ms
  * }
  */
-schema.methods.generateTempAuthToken = function(){
-  return jwt.sign({
-    id: this._id
-  }, JWT_SECRET, {
-    expiresInMinutes: 60,
-  });
+schema.methods.generateTempAuthToken = function () {
+  return jwt.sign(
+    {
+      id: this._id,
+    },
+    JWT_SECRET,
+    {
+      expiresInMinutes: 60,
+    }
+  );
 };
 
 //=========================================
 // Static Methods
 //=========================================
 
-schema.statics.generateHash = function(password) {
+schema.statics.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
 };
 
@@ -284,8 +280,8 @@ schema.statics.generateHash = function(password) {
  * @param  {[type]}   token token
  * @param  {Function} cb    args(err, email)
  */
-schema.statics.verifyEmailVerificationToken = function(token, callback){
-  jwt.verify(token, JWT_SECRET, function(err, email) {
+schema.statics.verifyEmailVerificationToken = function (token, callback) {
+  jwt.verify(token, JWT_SECRET, function (err, email) {
     return callback(err, email);
   });
 };
@@ -295,16 +291,15 @@ schema.statics.verifyEmailVerificationToken = function(token, callback){
  * @param  {[type]}   token    temporary auth token
  * @param  {Function} callback args(err, id)
  */
-schema.statics.verifyTempAuthToken = function(token, callback){
-  jwt.verify(token, JWT_SECRET, function(err, payload){
-
-    if (err || !payload){
+schema.statics.verifyTempAuthToken = function (token, callback) {
+  jwt.verify(token, JWT_SECRET, function (err, payload) {
+    if (err || !payload) {
       return callback(err);
     }
 
-    if (!payload.exp || Date.now() >= payload.exp * 1000){
+    if (!payload.exp || Date.now() >= payload.exp * 1000) {
       return callback({
-        message: 'Token has expired.'
+        message: "Token has expired.",
       });
     }
 
@@ -312,9 +307,9 @@ schema.statics.verifyTempAuthToken = function(token, callback){
   });
 };
 
-schema.statics.findOneByEmail = function(email){
+schema.statics.findOneByEmail = function (email) {
   return this.findOne({
-    email: email.toLowerCase()
+    email: email.toLowerCase(),
   });
 };
 
@@ -323,23 +318,31 @@ schema.statics.findOneByEmail = function(email){
  * @param  {String}   token    User's authentication token.
  * @param  {Function} callback args(err, user)
  */
-schema.statics.getByToken = function(token, callback){
-  jwt.verify(token, JWT_SECRET, function(err, id){
-    if (err) {
-      return callback(err);
-    }
-    this.findOne({_id: id}, callback);
-  }.bind(this));
+schema.statics.getByToken = function (token, callback) {
+  jwt.verify(
+    token,
+    JWT_SECRET,
+    function (err, id) {
+      if (err) {
+        return callback(err);
+      }
+      this.findOne({ _id: id }, callback);
+    }.bind(this)
+  );
 };
 
-schema.statics.validateProfile = function(profile, cb){
-  return cb(!(
-    profile.name.length > 0 &&
-    profile.minor &&
-    profile.school.length > 0 &&
-    ['2021', '2022', '2023', '2024'].indexOf(profile.graduationYear) > -1 &&
-    ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
-    ));
+schema.statics.validateProfile = function (profile, cb) {
+  return cb(
+    !(
+      profile.name.length > 0 &&
+      profile.minor &&
+      profile.school.length > 0 &&
+      profile.numOfHackathons > -1 &&
+      ["2021", "2022", "2023", "2024", "2025"].indexOf(profile.graduationYear) >
+        -1 &&
+      ["M", "F", "O", "N"].indexOf(profile.gender) > -1
+    )
+  );
 };
 
 //=========================================
@@ -350,10 +353,9 @@ schema.statics.validateProfile = function(profile, cb){
  * Has the user completed their profile?
  * This provides a verbose explanation of their furthest state.
  */
-schema.virtual('status.name').get(function(){
-
+schema.virtual("status.name").get(function () {
   if (this.status.checkedIn) {
-    return 'checked in';
+    return "checked in";
   }
 
   if (this.status.declined) {
@@ -368,16 +370,15 @@ schema.virtual('status.name').get(function(){
     return "admitted";
   }
 
-  if (this.status.completedProfile){
+  if (this.status.completedProfile) {
     return "submitted";
   }
 
-  if (!this.verified){
+  if (!this.verified) {
     return "unverified";
   }
 
   return "incomplete";
-
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model("User", schema);
