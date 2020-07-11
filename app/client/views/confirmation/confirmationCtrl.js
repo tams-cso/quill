@@ -26,14 +26,6 @@ angular.module('reg')
 
       function _updateUser(e){
         var confirmation = $scope.user.confirmation;
-        // Get the dietary restrictions as an array
-        var drs = [];
-        Object.keys($scope.dietaryRestrictions).forEach(function(key){
-          if ($scope.dietaryRestrictions[key]){
-            drs.push(key);
-          }
-        });
-        confirmation.dietaryRestrictions = drs;
 
         UserService
           .updateConfirmation(user._id, confirmation)
