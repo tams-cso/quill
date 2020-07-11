@@ -40,7 +40,6 @@ var profile = {
   numOfHackathons: {
     type: Number,
     min: 0,
-    max: 500,
   },
 
   essay: {
