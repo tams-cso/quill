@@ -5,7 +5,6 @@ var mongoose   = require('mongoose'),
     JWT_SECRET = process.env.JWT_SECRET;
 
 var profile = {
-
   // Basic info
   name: {
     type: String,
@@ -28,30 +27,35 @@ var profile = {
   graduationYear: {
     type: String,
     enum: {
-      values: '2021 2022 2023 2024'.split(' '),
-    }
+      values: "2021 2022 2023 2024 2025".split(" "),
+    },
   },
 
-  description: {
+  marketing: {
     type: String,
     min: 0,
-    max: 300
+    max: 300,
+  },
+
+  numOfHackathons: {
+    type: Number,
+    min: 0,
+    max: 500,
   },
 
   essay: {
     type: String,
     min: 0,
-    max: 1500
+    max: 1500,
   },
 
   // Optional info for demographics
   gender: {
     type: String,
-    enum : {
-      values: 'M F O N'.split(' ')
-    }
+    enum: {
+      values: "M F O N".split(" "),
+    },
   },
-
 };
 
 // Only after confirmed
