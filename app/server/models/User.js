@@ -56,47 +56,23 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-  phoneNumber: String,
-  dietaryRestrictions: [String],
   shirtSize: {
     type: String,
     enum: {
-      values: 'XS S M L XL XXL WXS WS WM WL WXL WXXL'.split(' ')
+      values: 'XS S M L XL XXL'.split(' ')
     }
   },
-  wantsHardware: Boolean,
-  hardware: String,
 
+  country: String,
+  state: String,
   major: String,
   github: String,
-  twitter: String,
-  website: String,
   resume: String,
 
-  needsReimbursement: Boolean,
-  address: {
-    name: String,
-    line1: String,
-    line2: String,
-    city: String,
-    state: String,
-    zip: String,
-    country: String
-  },
-  receipt: String,
-
-  hostNeededFri: Boolean,
-  hostNeededSat: Boolean,
-  genderNeutral: Boolean,
-  catFriendly: Boolean,
-  smokingFriendly: Boolean,
-  hostNotes: String,
+  signatureLiability: String,
+  signatureCodeOfConduct: String,
 
   notes: String,
-
-  signatureLiability: String,
-  signaturePhotoRelease: String,
-  signatureCodeOfConduct: String,
 };
 
 var status = {

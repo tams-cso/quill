@@ -23,27 +23,6 @@ angular.module('reg')
       $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
 
       // -------------------------------
-      // All this just for dietary restriction checkboxes fml
-
-      var dietaryRestrictions = {
-        'Vegetarian': false,
-        'Vegan': false,
-        'Halal': false,
-        'Kosher': false,
-        'Nut Allergy': false
-      };
-
-      if (user.confirmation.dietaryRestrictions){
-        user.confirmation.dietaryRestrictions.forEach(function(restriction){
-          if (restriction in dietaryRestrictions){
-            dietaryRestrictions[restriction] = true;
-          }
-        });
-      }
-
-      $scope.dietaryRestrictions = dietaryRestrictions;
-
-      // -------------------------------
 
       function _updateUser(e){
         var confirmation = $scope.user.confirmation;
@@ -80,26 +59,8 @@ angular.module('reg')
                 }
               ]
             },
-            phone: {
-              identifier: 'phone',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter a phone number.'
-                }
-              ]
-            },
             signatureLiability: {
               identifier: 'signatureLiabilityWaiver',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
-            signaturePhotoRelease: {
-              identifier: 'signaturePhotoRelease',
               rules: [
                 {
                   type: 'empty',
