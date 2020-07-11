@@ -10,5 +10,3 @@ app/client/build/
 .DS_Store
 .python-version
 
-
-.\npm-shrinkwrap.json
