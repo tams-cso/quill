@@ -63,8 +63,7 @@ var confirmation = {
     }
   },
 
-  country: String,
-  state: String,
+  address: String,
   major: String,
   github: String,
   resume: String,
