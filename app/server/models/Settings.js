@@ -12,33 +12,33 @@ var schema = new mongoose.Schema({
   status: String,
   timeOpen: {
     type: Number,
-    default: 0
+    default: 0,
   },
   timeClose: {
     type: Number,
-    default: Date.now() + 31104000000 // Add a year from now.
+    default: Date.now() + 31104000000, // Add a year from now.
   },
   timeConfirm: {
     type: Number,
-    default: 604800000 // Date of confirmation
+    default: Date.now() + 31104000000 // Date of confirmation
   },
   whitelistedEmails: {
     type: [String],
     select: false,
-    default: ['.edu'],
+    default: [".edu"],
   },
   waitlistText: {
-    type: String
+    type: String,
   },
   acceptanceText: {
     type: String,
   },
   confirmationText: {
-    type: String
+    type: String,
   },
   allowMinors: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 });
 
 /**
