@@ -3,24 +3,30 @@
     Confirmation
   </div>
 
+
+
   <div class="ui stackable page grid">
     <div class="column">
 
+      <p>If you have any questions, or run into any errors, please reach out to us at <a target="_blank"
+          href="mailto:team@hacktams.org">team@hacktams.org</a>!
+      </p>
+
       <div class="ui form">
 
-        <div class="divided title">Basic Details</div>
+        <div class="divided title">Swag Details (optional)</div>
 
         <fieldset ng-disabled="pastConfirmation">
 
+          <p>
+            Let's get you some swag (stickers, shirt, sponsor goodies, etc)! Although only the first 150 applicants and
+            prize winners are guarenteed swag, we might have remaining funds for additional swag shipment. If you don't
+            want swag, you don't have to fill this section out. But who doesn't want free stuff!?!?
+          </p>
+
           <div class="field">
             <label> Shirt Size </label>
-            <p>
-              Let's get you some swag!
-            </p>
-            <select
-              name="shirt"
-              ng-model="user.confirmation.shirtSize"
-              required>
+            <select name="shirt" ng-model="user.confirmation.shirtSize" required>
               <option value="">Shirt Size</option>
               <option value="XS">Unisex X-Small</option>
               <option value="S">Unisex Small</option>
@@ -32,15 +38,57 @@
           </div>
 
           <div class="field">
+            <label>Full Name</label>
+            <input type="text" name="name" ng-model="user.confirmation.address.name">
+          </div>
+
+          <div class="field">
+            <label> Address Line 1 - Street address, P.O. box, company name, c/o </label>
+            <input type="text" name="addressLine1" ng-model="user.confirmation.address.line1">
+          </div>
+
+          <div class="field">
+            <label> Address Line 2 - Apartment, suite, unit, building, floor, etc. </label>
+            <input type="text" name="addressLine2" ng-model="user.confirmation.address.line2">
+          </div>
+
+          <div class="four fields">
+            <div class="field">
+              <label> City </label>
+              <input type="text" name="city" ng-model="user.confirmation.address.city">
+            </div>
+            <div class="field">
+              <label> State/Province/Region </label>
+              <input type="text" name="state" ng-model="user.confirmation.address.state">
+            </div>
+            <div class="field">
+              <label> ZIP </label>
+              <input type="text" name="zip" ng-model="user.confirmation.address.zip">
+            </div>
+            <div class="field">
+              <label> Country </label>
+              <input type="text" name="country" ng-model="user.confirmation.address.country">
+            </div>
+          </div>
+
+          <!-- <div class="field">
+            <label> Travel Receipt </label>
+            <p>
+              So that we can process your reimbursement faster, please name your receipt: <strong>{{fileName}}</strong>
+            </p>
+            <a target="_blank" href="https://go.hackmit.org/travel-receipts" class="ui pink button">
+              Upload Receipt
+            </a>
+          </div> -->
+
+          <!-- <div class="field">
             <label> Shipping address </label>
             <p>
               Where to send your swag?
             </p>
-            <input type="text"
-                   name="country"
-                   placeholder="1600 Pennsylvania Ave Nw, Washington, DC 20500"
-                   ng-model="user.confirmation.address">
-          </div>
+            <input type="text" name="country" placeholder="1600 Pennsylvania Ave Nw, Washington, DC 20500"
+              ng-model="user.confirmation.address">
+          </div> -->
 
           <br>
           <br>
@@ -48,30 +96,23 @@
           <div class="divided title"> Skills & Accomplishments (optional) </div>
 
           <div class="field">
-            <label> What are you studying? </label>
-            <input type="text"
-                   name="study"
-                   placeholder="Computer Science, Product Design, Basket Weaving, etc."
-                   ng-model="user.confirmation.major">
+            <label> What are you studying/What do you want to study? </label>
+            <input type="text" name="study" placeholder="Computer Science, Product Design, Basket Weaving, etc."
+              ng-model="user.confirmation.major">
           </div>
 
           <div class="field">
             <label> Github </label>
-            <input type="text"
-                   name="github"
-                   placeholder="https://github.com/foobar"
-                   ng-model="user.confirmation.github">
+            <input type="text" name="github" placeholder="https://github.com/foobar"
+              ng-model="user.confirmation.github">
           </div>
 
           <div class="field">
             <label> Skill Sheet </label>
             <p>
-              Upload a document outlining any skills or experience you'd like to share (ex. resume). PDF preferred!
+              Upload a document outlining any skills or experience you'd like to share with sponsors (ex. resume). PDF preferred!
             </p>
-            <a
-              target="_blank"
-              href="https://www.dropbox.com/request/QAjjfEkRFQaFApJq8LaJ"
-              class="ui green button">
+            <a target="_blank" href="https://www.dropbox.com/request/QAjjfEkRFQaFApJq8LaJ" class="ui green button">
               Upload
             </a>
           </div>
@@ -82,53 +123,66 @@
           <div class="divided title">Legal</div>
 
           <div class="field">
-            <label> Liability Waiver </label>
+            <label>Liability Release</label>
             <p>
-              <a
-                target="_blank"
+              <a target="_blank"
                 href="https://drive.google.com/file/d/1htOfnXshpxqchiY0svgiVZTBOLgYkVU9/view?usp=sharing">
-                Liability Waiver
+                Event Liability Release
               </a>
             </p>
             <p>
-              For legal reasons, we ask that you read and accept the terms of our liability waiver. If you are under 18, have your parent/guardian sign for you.
+              For legal reasons, we ask that you read and accept the terms of our <a target="_blank"
+                href="https://drive.google.com/file/d/1htOfnXshpxqchiY0svgiVZTBOLgYkVU9/view?usp=sharing">
+                Event Liability Release
+              </a>. If you are under 18,
+              have your parent/guardian sign for you.
             </p>
             <p>
-              By writing my name below, I affirm that I have read and accepted the terms of the liability waiver above.
+              By writing my name below, I affirm that I have read and accepted the terms of the <a target="_blank"
+                href="https://drive.google.com/file/d/1htOfnXshpxqchiY0svgiVZTBOLgYkVU9/view?usp=sharing">
+                Event Liability Release
+              </a> above.
             </p>
-            <input type="text"
-                   name="signatureLiabilityWaiver"
-                   placeholder="Your Full Legal Name or Parent/Guardian's if under 18"
-                   ng-model="user.confirmation.signatureLiability">
+            <input type="text" name="signatureLiabilityWaiver"
+              placeholder="Your Full Legal Name or Parent/Guardian's if under 18"
+              ng-model="user.confirmation.signatureLiability">
           </div>
 
           <div class="field">
             <label> Code of Conduct </label>
             <p>
-              <a
-                target="_blank"
-                href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+              <a target="_blank" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
                 MLH Code of Conduct
               </a>
             </p>
             <p>
-              It is extremely important to us that attendees follow a set of guidelines to make the event fun for everyone involved. Please read through and make sure you understand what we will be expecting of you.
+              I have read and agree to the
+              <a target="_blank" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"> MLH Code of Conduct </a>.
+              I authorize you to share my application/registration
+              information for event administration, ranking, MLH administration, pre- and post-event
+              informational e-mails, and occasional messages about hackathons in-line with the
+              <a target="_blank" href="https://mlh.io/privacy">MLH Privacy Policy</a>.
+              I further agree to the terms of both the
+              <a target="_blank" href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">MLH
+                Contest Terms and Conditions</a>
+              and the
+              <a target="_blank" href="https://mlh.io/privacy">MLH Privacy Policy</a>.
             </p>
             <p>
               By writing my name below, I affirm that I have read and will abide by the code of conduct detailed above.
             </p>
-            <input type="text"
-                   name="signatureCodeOfConduct"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signatureCodeOfConduct">
+            <input type="text" name="signatureCodeOfConduct" placeholder="Your Full Legal Name"
+              ng-model="user.confirmation.signatureCodeOfConduct">
           </div>
 
-          <div class="field">
+          <!-- <div class="field">
             <div class="ui checkbox">
-              <input type="checkbox" id="informationRelease" name="informationRelease" ng-model="user.confirmation.informationRelease" />
-              <label for="informationRelease">I give hackTAMS permission to share my information with their sponsors, team, and MLH.</label>
+              <input type="checkbox" id="informationRelease" name="informationRelease"
+                ng-model="user.confirmation.informationRelease" />
+              <label for="informationRelease">I give hackTAMS permission to share my information with their sponsors,
+                team, and MLH.</label>
             </div>
-          </div>
+          </div> -->
 
           <br>
           <br>
@@ -142,14 +196,11 @@
             <p>
               If there's anything else you need to let us know, tell us here!
             </p>
-            <textarea
-              ng-model="user.confirmation.notes"></textarea>
+            <textarea ng-model="user.confirmation.notes"></textarea>
           </div>
 
           <div class="field" ng-hide="regIsClosed">
-            <button type="submit"
-                    class="fluid ui green button"
-                    ng-click="submitForm()">
+            <button type="submit" class="fluid ui green button" ng-click="submitForm()">
               Submit
             </button>
           </div>

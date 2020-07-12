@@ -62,11 +62,20 @@ var confirmation = {
   shirtSize: {
     type: String,
     enum: {
-      values: 'XS S M L XL XXL'.split(' ')
-    }
+      values: "XS S M L XL XXL".split(" "),
+    },
   },
 
-  address: String,
+  // address: String,
+  address: {
+    name: String,
+    line1: String,
+    line2: String,
+    city: String,
+    state: String,
+    zip: String,
+    country: String,
+  },
   major: String,
   github: String,
   resume: String,
@@ -318,7 +327,7 @@ schema.statics.validateProfile = function (profile, cb) {
       profile.school.length > 0 &&
       profile.numOfHackathons > -1 &&
       ["2021", "2022", "2023", "2024", "2025"].indexOf(profile.graduationYear) >
-        -1 &&
+      -1 &&
       ["M", "F", "O", "N"].indexOf(profile.gender) > -1
     )
   );

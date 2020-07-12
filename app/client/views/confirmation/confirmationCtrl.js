@@ -42,24 +42,24 @@ angular.module('reg')
         // Semantic-UI form validation
         $('.ui.form').form({
           fields: {
-            shirt: {
-              identifier: 'shirt',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please give us a shirt size!'
-                }
-              ]
-            },
-            address: {
-              identifier: 'address',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please let us know your shipping address!'
-                }
-              ]
-            },
+            // shirt: {
+            //   identifier: 'shirt',
+            //   rules: [
+            //     {
+            //       type: 'empty',
+            //       prompt: 'Please give us a shirt size!'
+            //     }
+            //   ]
+            // },
+            // address: {
+            //   identifier: 'address',
+            //   rules: [
+            //     {
+            //       type: 'empty',
+            //       prompt: 'Please let us know your shipping address!'
+            //     }
+            //   ]
+            // },
             signatureLiability: {
               identifier: 'signatureLiabilityWaiver',
               rules: [
