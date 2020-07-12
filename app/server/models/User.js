@@ -73,6 +73,11 @@ var confirmation = {
 
   signatureLiability: String,
   signatureCodeOfConduct: String,
+  informationRelease: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 
   notes: String,
 };
