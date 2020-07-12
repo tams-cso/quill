@@ -1,36 +1,31 @@
 <div class="ui top attached segment">
-
   <div class="ui header">
-    {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
-    <span
-      ng-show="selectedUser.admin">
+    {{selectedUser.profile.name ? selectedUser.profile.name :
+    selectedUser.email}}
+    <span ng-show="selectedUser.admin">
       (Admin)
     </span>
   </div>
-
 </div>
 
 <div class="ui botom attached segment">
-
   <div>
     <p>
       <strong> Status: </strong>
-      <span
-        class="ui label">
+      <span class="ui label">
         {{selectedUser.status.name.toUpperCase()}}
       </span>
     </p>
     <p>
-      <strong> Admitted by: </strong> {{selectedUser.status.admittedBy ? selectedUser.status.admittedBy : 'N/A'}}
+      <strong> Admitted by: </strong> {{selectedUser.status.admittedBy ?
+      selectedUser.status.admittedBy : 'N/A'}}
     </p>
   </div>
 
   <div class="ui divider"></div>
 
   <div class="ui form">
-
     <fieldset ng-disabled="false">
-
       <div class="ui header">
         Basic Info
       </div>
@@ -49,7 +44,6 @@
         {{formatTime(selectedUser.lastUpdated)}}
       </div>
 
-
       <div class="field">
         <label> Email </label>
         <input type="text" ng-model="selectedUser.email" />
@@ -59,46 +53,58 @@
         <label> Team </label>
         <input type="text" ng-model="selectedUser.teamCode" />
       </div>
-
     </fieldset>
-
   </div>
 
   <div class="ui divider"></div>
 
   <div class="ui form">
-
     <fieldset ng-disabled="false">
-
       <div class="ui header">
-       Profile
+        Profile
       </div>
 
       <div class="field">
         <label> Email </label>
-        <input type="email" name="email" disabled="disabled" ng-model="user.email">
+        <input
+          type="email"
+          name="email"
+          disabled="disabled"
+          ng-model="user.email"
+        />
       </div>
-      
+
       <div class="field">
         <label> Full Name </label>
-        <input type="text" name="name" ng-model="user.profile.name">
+        <input type="text" name="name" ng-model="user.profile.name" />
       </div>
-      
+
       <div class="field" ng-show="autoFilledSchool">
         <label> School </label>
-        <input class="ui input" disabled="disabled" ng-show="autoFilledSchool" ng-model="user.profile.school">
+        <input
+          class="ui input"
+          disabled="disabled"
+          ng-show="autoFilledSchool"
+          ng-model="user.profile.school"
+        />
       </div>
-      
+
       <div class="field" ng-show="!autoFilledSchool">
         <label> School </label>
         <div id="school" class="ui search">
           <div class="ui input">
-            <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">
+            <input
+              class="prompt"
+              type="text"
+              placeholder="School"
+              name="school"
+              ng-model="user.profile.school"
+            />
           </div>
           <div class="results"></div>
         </div>
       </div>
-      
+
       <div class="field">
         <label>Graduation Year</label>
         <select name="year" ng-model="user.profile.graduationYear">
@@ -107,9 +113,10 @@
           <option value="2022">2022</option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
+          <option value="2024">2025+</option>
         </select>
       </div>
-      
+
       <div class="field">
         <label>Gender</label>
         <select name="gender" ng-model="user.profile.gender">
@@ -120,50 +127,65 @@
           <option value="N">I prefer not to answer.</option>
         </select>
       </div>
-      
+
       <div class="field">
-        <label>I would describe myself as a...</label>
-        <input type="text" placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
-          ng-model="user.profile.description">
+        <label>How many hackathons have you been to?</label>
+        <input
+          type="number"
+          placeholder="0"
+          ng-model="user.profile.numOfHackathons"
+          name="numOfHackathons"
+          min="0"
+        />
       </div>
-      
+
+      <div class="field">
+        <label>How did you hear about hackTAMS? (optional)</label>
+        <input
+          type="text"
+          placeholder="Devpost"
+          ng-model="user.profile.marketing"
+          name="marketing"
+        />
+      </div>
+
       <div class="field">
         <label>
           What would you like to learn or get out of hackTAMS? (optional)
         </label>
-        <textarea ng-model="user.profile.essay">
-                </textarea>
+        <textarea
+          ng-model="user.profile.essay"
+          placeholder="I want to learn how build a website!"
+        >
+        </textarea>
       </div>
-      
+
       <div class="field">
         <p>
-          This event is only for students 18 years or younger. However, this means we are required to have a parent consent
-          form.
+          This event is only for students 13 to 18 (inclusive).
         </p>
         <div class="ui checkbox">
-          <input type="checkbox" id="minor" ng-model="user.profile.minor">
-          <label for="minor">I am 18 or younger.</label>
+          <input type="checkbox" id="minor" ng-model="user.profile.minor" />
+          <label for="minor">I am 13-18 years old.</label>
         </div>
       </div>
 
       <div class="field">
         <div
           ng-click="updateProfile()"
-          class="ui positive right labeled icon button">
+          class="ui positive right labeled icon button"
+        >
           Update Profile
           <i class="checkmark icon"></i>
         </div>
       </div>
-
     </fieldset>
   </div>
 
   <div class="ui divider"></div>
 
   <div class="ui form">
-
     <fieldset ng-disabled="false">
-
       <div class="ui header">
         Confirmation
       </div>
@@ -176,7 +198,9 @@
       <div class="field">
         <label> Dietary Restrictions </label>
         <input
-          type="text" ng-model="selectedUser.confirmation.dietaryRestrictions" />
+          type="text"
+          ng-model="selectedUser.confirmation.dietaryRestrictions"
+        />
       </div>
 
       <div class="field">
@@ -211,16 +235,19 @@
           Needs Hardware
         </label>
         <div class="ui checkbox">
-          <input type="checkbox" ng-model="selectedUser.confirmation.wantsHardware">
+          <input
+            type="checkbox"
+            ng-model="selectedUser.confirmation.wantsHardware"
+          />
           <label> Yup, I need hardware </label>
         </div>
       </div>
 
       <div class="field">
         <label>
-        Hardware
+          Hardware
         </label>
-        <input type="text" ng-model="selectedUser.confirmation.hardware">
+        <input type="text" ng-model="selectedUser.confirmation.hardware" />
       </div>
 
       <div class="ui divider"></div>
@@ -233,11 +260,13 @@
         <strong> Needs Hosting Friday </strong>
         <i
           ng-if="selectedUser.confirmation.hostNeededFri"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.hostNeededFri"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
@@ -245,11 +274,13 @@
         <strong> Needs Hosting Saturday </strong>
         <i
           ng-if="selectedUser.confirmation.hostNeededSat"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.hostNeededSat"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
@@ -257,11 +288,13 @@
         <strong> Gender Neutral </strong>
         <i
           ng-if="selectedUser.confirmation.genderNeutral"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.genderNeutral"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
@@ -269,11 +302,13 @@
         <strong> Cat Friendly </strong>
         <i
           ng-if="selectedUser.confirmation.catFriendly"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.catFriendly"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
@@ -281,11 +316,13 @@
         <strong> Smoking Friendly </strong>
         <i
           ng-if="selectedUser.confirmation.smokingFriendly"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.smokingFriendly"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
@@ -304,35 +341,45 @@
         <strong> Needs Reimbursement</strong>
         <i
           ng-if="selectedUser.confirmation.needsReimbursement"
-          class="green check circle icon">
+          class="green check circle icon"
+        >
         </i>
         <i
           ng-if="!selectedUser.confirmation.needsReimbursement"
-          class="red remove circle icon">
+          class="red remove circle icon"
+        >
         </i>
       </div>
 
       <div class="field">
         <label>Full Name</label>
-        <input type="text"
-               name="name"
-               ng-model="selectedUser.confirmation.address.name">
+        <input
+          type="text"
+          name="name"
+          ng-model="selectedUser.confirmation.address.name"
+        />
       </div>
 
       <div class="field">
-        <label> Address Line 1 - Street address, P.O. box, company name, c/o </label>
+        <label>
+          Address Line 1 - Street address, P.O. box, company name, c/o
+        </label>
         <input
           type="text"
           name="addressLine1"
-          ng-model="selectedUser.confirmation.address.line1">
+          ng-model="selectedUser.confirmation.address.line1"
+        />
       </div>
 
       <div class="field">
-        <label> Address Line 2 - Apartment, suite, unit, building, floor, etc. </label>
+        <label>
+          Address Line 2 - Apartment, suite, unit, building, floor, etc.
+        </label>
         <input
           type="text"
           name="addressLine2"
-          ng-model="selectedUser.confirmation.address.line2">
+          ng-model="selectedUser.confirmation.address.line2"
+        />
       </div>
 
       <div class="four fields">
@@ -341,28 +388,32 @@
           <input
             type="text"
             name="city"
-            ng-model="selectedUser.confirmation.address.city">
+            ng-model="selectedUser.confirmation.address.city"
+          />
         </div>
         <div class="field">
           <label> State/Province/Region </label>
           <input
             type="text"
             name="state"
-            ng-model="selectedUser.confirmation.address.state">
+            ng-model="selectedUser.confirmation.address.state"
+          />
         </div>
         <div class="field">
           <label> ZIP </label>
           <input
             type="text"
             name="zip"
-            ng-model="selectedUser.confirmation.address.zip">
+            ng-model="selectedUser.confirmation.address.zip"
+          />
         </div>
         <div class="field">
           <label> Country </label>
           <input
             type="text"
             name="country"
-            ng-model="selectedUser.confirmation.address.country">
+            ng-model="selectedUser.confirmation.address.country"
+          />
         </div>
       </div>
 
@@ -375,8 +426,6 @@
         <label> Additional Notes </label>
         <textarea ng-model="selectedUser.confirmation.notes"></textarea>
       </div>
-
     </fieldset>
-
   </div>
 </div>

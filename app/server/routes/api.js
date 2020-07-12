@@ -178,7 +178,8 @@ module.exports = function(router) {
     var filename = "export_quill_users" + timeStamp() + ".csv";
 
     var fields = ['_id','email','verified','timestamp','lastUpdated',
-                  'profile.adult','profile.name','profile.school',
+                  'profile.minor','profile.name','profile.school',
+                  'profile.numOfHackathons', 'profile.marketing',
                   'profile.gender','profile.graduationYear',
                   'profile.description','profile.essay','status.name',
                   'status.completedProfile','status.admitted',

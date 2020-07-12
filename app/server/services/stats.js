@@ -15,15 +15,16 @@ function calculateStats(){
         M: 0,
         F: 0,
         O: 0,
-        N: 0
+        N: 0,
       },
       schools: {},
       year: {
-        '2021': 0,
-        '2022': 0,
-        '2023': 0,
-        '2024': 0,
-      }
+        "2021": 0,
+        "2022": 0,
+        "2023": 0,
+        "2024": 0,
+        "2025": 0,
+      },
     },
 
     teams: {},
@@ -40,19 +41,19 @@ function calculateStats(){
     confirmedNone: 0,
 
     shirtSizes: {
-      'XS': 0,
-      'S': 0,
-      'M': 0,
-      'L': 0,
-      'XL': 0,
-      'XXL': 0,
-      'WXS': 0,
-      'WS': 0,
-      'WM': 0,
-      'WL': 0,
-      'WXL': 0,
-      'WXXL': 0,
-      'None': 0
+      XS: 0,
+      S: 0,
+      M: 0,
+      L: 0,
+      XL: 0,
+      XXL: 0,
+      WXS: 0,
+      WS: 0,
+      WM: 0,
+      WL: 0,
+      WXL: 0,
+      WXXL: 0,
+      None: 0,
     },
 
     dietaryRestrictions: {},
@@ -71,7 +72,7 @@ function calculateStats(){
 
     wantsHardware: 0,
 
-    checkedIn: 0
+    checkedIn: 0,
   };
 
   User
